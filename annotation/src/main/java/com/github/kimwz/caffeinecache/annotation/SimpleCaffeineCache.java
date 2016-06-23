@@ -1,4 +1,4 @@
-package kr.kimwz.sample.cache;
+package com.github.kimwz.caffeinecache.annotation;
 
 import java.lang.annotation.*;
 

@@ -1,0 +1,23 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+apply plugin: 'java'
+
+jar {
+    baseName = 'caffeine-cache-annotation'
+    version = '1.0-SNAPSHOT'
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile('org.springframework:spring-context:4.2.6.RELEASE')
+    compile('org.aspectj:aspectjweaver:1.8.6')
+    compile("com.github.ben-manes.caffeine:caffeine:2.3.1")
+}

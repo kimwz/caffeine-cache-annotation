@@ -1,6 +1,6 @@
-package kr.kimwz.sample.service;
+package com.github.kimwz.caffeinecache.annotation.sample.service;
 
-import kr.kimwz.sample.cache.SimpleCaffeineCache;
+import com.github.kimwz.caffeinecache.annotation.SimpleCaffeineCache;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
 
