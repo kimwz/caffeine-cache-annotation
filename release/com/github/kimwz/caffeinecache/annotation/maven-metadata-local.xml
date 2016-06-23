@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.github.kimwz.caffeinecache</groupId>
+  <artifactId>annotation</artifactId>
+  <versioning>
+    <versions>
+      <version>1.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20160623152147</lastUpdated>
+  </versioning>
+</metadata>

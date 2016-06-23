@@ -1,0 +1,1 @@
+mvn install:install-file -DgroupId=com.github.kimwz.caffeinecache -DartifactId=annotation -Dversion=1.0-SNAPSHOT -Dpackaging=jar -Dfile=./annotation/build/libs/caffeine-cache-annotation-1.0-SNAPSHOT.jar -DlocalRepositoryPath=./release/
