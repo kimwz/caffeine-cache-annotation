@@ -1,0 +1,27 @@
+# Created by .gitignore support plugin (hsz.mobi)
+/target
+.DS_Store
+/.classpath
+/.project
+/.springBeans
+/.settings
+/src/main/resources/rebel.xml
+/bin
+/.gradle
+/build
+*.orig
+/nodejs
+/node_modules
+.factorypath
+.idea
+ard.i*
+/build
+logLocation_IS_UNDEFINED
+work
+/logs
+*.MF
+*.yml
+*.iml
+*.log
+/src/main/generated-sources
+cookies.txt
