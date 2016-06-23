@@ -1,6 +1,6 @@
-package kr.kimwz.sample.controller;
+package com.github.kimwz.caffeinecache.annotation.sample.controller;
 
-import kr.kimwz.sample.service.TimeService;
+import com.github.kimwz.caffeinecache.annotation.sample.service.TimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +14,11 @@ public class HelloController {
 
     @RequestMapping("/")
     public String index(@RequestParam(defaultValue = "karl") String name) throws Exception {
-        return timeService.getNow(name);
+        try {
+            return timeService.getNow(name);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return e.getMessage();
+        }
     }
 }

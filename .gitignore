@@ -8,7 +8,7 @@
 /src/main/resources/rebel.xml
 /bin
 /.gradle
-/build
+*/build
 *.orig
 /nodejs
 /node_modules

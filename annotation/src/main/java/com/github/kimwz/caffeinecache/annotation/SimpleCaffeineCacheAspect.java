@@ -1,13 +1,10 @@
-package kr.kimwz.sample.cache;
+package com.github.kimwz.caffeinecache.annotation;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.LoadingCache;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
@@ -17,13 +14,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 @Aspect
-@Component
 public class SimpleCaffeineCacheAspect {
-	static final Logger logger	= LoggerFactory.getLogger(SimpleCaffeineCacheAspect.class);
-
 	ConcurrentHashMap<String, LoadingCache> caches = new ConcurrentHashMap<>();
 
-	@Around("@annotation(SimpleCaffeineCache) && @annotation(annotation)")
+	@Around("@annotation(com.github.kimwz.caffeinecache.annotation.SimpleCaffeineCache) && @annotation(annotation)")
 	public Object autoRefreshCache(ProceedingJoinPoint joinPoint, SimpleCaffeineCache annotation) throws Throwable {
 		if (!caches.containsKey(annotation.name())) {
 			Caffeine cache = Caffeine.newBuilder();
@@ -41,14 +35,13 @@ public class SimpleCaffeineCacheAspect {
 			}
 
 			caches.put(annotation.name(), cache.build(
-					key -> {
-						try {
-							return joinPoint.proceed(((CacheKey)key).getParams());
-						} catch (Throwable throwable) {
-							logger.error("Failed LoadingCache", throwable);
-						}
-						return null;
+				key -> {
+					try {
+						return joinPoint.proceed(((CacheKey)key).getParams());
+					} catch (Throwable throwable) {
+						throw new RuntimeException("Fail to refresh cache", throwable);
 					}
+				}
 			));
 		}
 

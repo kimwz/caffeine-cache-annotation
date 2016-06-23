@@ -1,0 +1,4 @@
+rootProject.name = 'caffeine-cache-annotation'
+
+include 'annotation'
+include 'sample'
