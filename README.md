@@ -1,4 +1,4 @@
-A sample code using [CaffeineCache](https://travis-ci.org/ben-manes/caffeine) through Annotation in Spring
+A sample code using [CaffeineCache](https://github.com/ben-manes/caffeine) through Annotation in Spring
 
 - Available [asynchronously refresh](https://github.com/ben-manes/caffeine/wiki/Refresh) setting in annotation.
 
