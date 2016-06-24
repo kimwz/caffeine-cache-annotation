@@ -18,11 +18,15 @@ jar {
 repositories {
     mavenCentral()
     jcenter()
+    maven {
+        url "https://github.com/kimwz/caffeine-cache-annotation/raw/master/release/"
+    }
 }
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
+    compile('org.springframework.boot:spring-boot-starter-web')
     compile('joda-time:joda-time')
+    compile('com.github.kimwz.caffeinecache:caffeinecache-annotation:1.0')
 }
 
 task wrapper(type: Wrapper) {
