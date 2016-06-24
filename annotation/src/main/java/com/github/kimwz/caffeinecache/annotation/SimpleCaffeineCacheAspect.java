@@ -2,14 +2,14 @@ package com.github.kimwz.caffeinecache.annotation;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.LoadingCache;
+import com.sun.tools.javac.util.Assert;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.springframework.util.Assert;
-import org.springframework.util.StringUtils;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.StringJoiner;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
@@ -67,7 +67,7 @@ public class SimpleCaffeineCacheAspect {
 
 
 		public CacheKey(Object... elements) {
-			Assert.notNull(elements, "Elements must not be null");
+			Assert.checkNonNull(elements, "Elements must not be null");
 			this.params = new Object[elements.length];
 			System.arraycopy(elements, 0, this.params, 0, elements.length);
 			this.hashCode = Arrays.deepHashCode(this.params);
@@ -90,7 +90,11 @@ public class SimpleCaffeineCacheAspect {
 
 		@Override
 		public String toString() {
-			return getClass().getSimpleName() + " [" + StringUtils.arrayToCommaDelimitedString(this.params) + "]";
+			StringJoiner joiner = new StringJoiner(",", "[", "]");
+			for (Object param : this.params) {
+				joiner.add(param.toString());
+			}
+			return getClass().getSimpleName() + joiner.toString();
 		}
 
 	}
