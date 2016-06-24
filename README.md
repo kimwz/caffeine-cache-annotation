@@ -22,6 +22,12 @@ public class TimeService {
 
 build.gradle
 ```java
+repositories {
+    maven {
+        url "https://github.com/kimwz/caffeine-cache-annotation/raw/master/release/"
+    }
+}
+
 compile('com.github.kimwz.caffeinecache:caffeinecache-annotation:1.0')
 
 // default dependencies
